@@ -27,57 +27,107 @@ Nhân vật ví dụ: Tùng, 1 sinh viên đại học, hiện không thể tự
 | 2 | Phụ thuộc người khác | Tùng không thể một mình vào siêu thị — cần người đọc màn hình POS, xác nhận số tiền, nhận biên lai. Mọi chuyến đi mua sắm đều cần "đồng hành"                     | Sinh viên khiếm thị, bạn bè / người thân bị kéo vào | Bạn cùng nhóm của Tùng: "Mỗi tuần mình đi siêu thị cùng Tùng 1-2 lần dù không có nhu cầu"             |
 | 3 | Khẩn cấp                | Tùng bị ngã xe, cần thanh toán tiền xe ôm đưa đến bệnh viện — không nhìn thấy mã QR của tài xế, không tự chuyển khoản được một mình trong tình huống hoảng loạn | Người khiếm thị trong tình huống khẩn cấp              | Tình huống giả định nhưng có cơ sở — người mù phụ thuộc người lạ trong khẩn cấp cao hơn đáng kể |
 
-# Problem Card #1 — Rủi ro tài chính
+```
+┌──────────────────────────────────────────────────────────┐
+│ PROBLEM CARD #1 — Rủi ro tài chính                      │
+│                                                          │
+│ Problem 1 câu:                                           │
+│ Tùng không thể tự xác nhận tên người nhận và số tiền     │
+│ trước khi bấm gửi, khiến mỗi giao dịch online trở thành │
+│ rủi ro mất tiền và buộc phải phụ thuộc người khác.       │
+│                                                          │
+│ Ai đang đau? Tùng — sinh viên khiếm thị; bạn cùng phòng │
+│ bị nhờ kiểm tra hộ định kỳ mỗi lần giao dịch.           │
+│                                                          │
+│ Workflow hiện tại:                                       │
+│ 1. Mở app → 2. Nhập SĐT + số tiền →                     │
+│ 3. Màn hình xác nhận hiện ra (không có TTS) →            │
+│ 4. Nhờ người đọc lại → 5. Xác nhận & gửi                │
+│                                                          │
+│ Bước nghẽn nhất: Bước 3 — không có audio confirm step,  │
+│ người khiếm thị không tự kiểm tra được tên người nhận.   │
+│                                                          │
+│ Đo thành công bằng gì?                                   │
+│ Giảm thời gian/giao dịch; giảm tỷ lệ chuyển nhầm tiền;  │
+│ tăng % giao dịch hoàn thành không cần nhờ người khác.   │
+│                                                          │
+│ Quick gut: □ No AI  □ Rule  ■ Workflow  □ Agent          │
+└──────────────────────────────────────────────────────────┘
+```
 
-**Actor:**
-Tùng — sinh viên đại học khiếm thị, thực hiện giao dịch chuyển khoản định kỳ qua MoMo/app ngân hàng.
+**Non-AI alternative:**
+App ngân hàng/MoMo tích hợp TTS đọc to tên người nhận, số tài khoản và số tiền tại màn hình xác nhận. Thêm bước read-back bắt buộc trước khi gửi. Cho phép lưu danh sách người nhận tin cậy kèm nhãn âm thanh. (Khả thi về kỹ thuật nhưng phụ thuộc vào quyết định của từng ngân hàng — không có chuẩn bắt buộc tại VN hiện tại.)
 
-**Thời điểm / bối cảnh:**
-Khi Tùng chuyển khoản qua MoMo/app ngân hàng để đóng tiền trọ, trả tiền nhóm, hoặc thanh toán dịch vụ hằng tháng.
+**AI hypothesis:**
+Kính AI nghe màn hình xác nhận và đọc to tên người nhận, số tài khoản và số tiền ngay trước khi Tùng bấm gửi — loại bỏ hoàn toàn bước nhờ người khác kiểm tra, áp dụng được trên mọi app ngân hàng mà không cần ngân hàng thay đổi gì.
 
-**Problem 1 câu:**
-Tùng không thể tự xác nhận tên người nhận và số tiền trước khi bấm gửi, khiến mỗi giao dịch online trở thành rủi ro mất tiền và buộc phải phụ thuộc người khác.
+```
+┌──────────────────────────────────────────────────────────┐
+│ PROBLEM CARD #2 — Phụ thuộc người khác                  │
+│                                                          │
+│ Problem 1 câu:                                           │
+│ Tùng không thể tự hoàn thành một lần mua sắm tại siêu   │
+│ thị vì không đọc được màn hình POS — mỗi chuyến đi đều  │
+│ kéo theo ít nhất một người bạn không có nhu cầu.         │
+│                                                          │
+│ Ai đang đau? Tùng — sinh viên khiếm thị; bạn cùng nhóm  │
+│ đi siêu thị hộ 1-2 lần/tuần dù không có nhu cầu.        │
+│                                                          │
+│ Workflow hiện tại:                                       │
+│ 1. Nhắn rủ bạn → 2. Chờ bạn rảnh (0–2 ngày) →          │
+│ 3. Đi cùng → 4. Bạn đọc POS & xác nhận số tiền →        │
+│ 5. Bạn nhận biên lai → 6. Tùng không tự xác minh        │
+│                                                          │
+│ Bước nghẽn nhất: Bước 4 — không đọc được màn hình POS,  │
+│ buộc phải có người đứng cạnh mỗi lần thanh toán.         │
+│                                                          │
+│ Đo thành công bằng gì?                                   │
+│ Tăng tỷ lệ mua sắm độc lập; giảm thời gian chờ bạn;    │
+│ tăng số địa điểm Tùng có thể tự đến một mình.           │
+│                                                          │
+│ Quick gut: □ No AI  □ Rule  □ Workflow  ■ Agent          │
+└──────────────────────────────────────────────────────────┘
+```
 
-**Current workflow:**
+**Non-AI alternative:**
+Siêu thị trang bị màn hình POS có TTS tại quầy thanh toán. Cung cấp nhân viên hỗ trợ accessibility theo yêu cầu. Thẻ thành viên với hồ sơ accessibility tự động kích hoạt chế độ hỗ trợ khi quẹt thẻ. (Đòi hỏi đầu tư hạ tầng và cam kết từ phía siêu thị — chưa phổ biến tại VN.)
 
-1. Người khiếm thị mở app/ngân hàng điện tử và chọn chức năng chuyển tiền online.
-2. Nhập số tài khoản/số điện thoại, số tiền và nội dung chuyển.
-3. Hệ thống hiển thị thông tin xác nhận bằng văn bản, nhưng ngân hàng không hỗ trợ Text to Speech để đọc tên người nhận, số tiền, hoặc đơn vị.
-4. Người dùng phải tự kiểm tra bằng công cụ hỗ trợ không đầy đủ hoặc nhờ người khác xác nhận.
-5. Người dùng xác nhận và gửi lệnh; nếu có nhầm lẫn, tiền bị chuyển sang tài khoản sai.
+**AI hypothesis:**
+Kính AI nhìn vào màn hình POS và đọc to số tiền cần thanh toán trước khi Tùng chạm thẻ — cho phép Tùng tự xác nhận độc lập tại bất kỳ siêu thị nào mà không cần người đứng cạnh hay siêu thị phải thay đổi hạ tầng.
 
-**Bottleneck:** Bước 3 - Ngân hàng không cung cấp Text to Speech khi xác nhận giao dịch.
-Bước xác nhận thông tin cuối cùng chỉ hiển thị văn bản, nên người khiếm thị không thể tự kiểm tra tên người nhận và số tiền; họ phải dừng lại, tìm công cụ hỗ trợ chưa đủ tin cậy hoặc nhờ người khác, làm giao dịch định kỳ trở nên chậm và dễ nhầm.
+```
+┌──────────────────────────────────────────────────────────┐
+│ PROBLEM CARD #3 — Khẩn cấp                              │
+│                                                          │
+│ Problem 1 câu:                                           │
+│ Khi bị ngã xe cần xe ôm đưa đến bệnh viện, Tùng không   │
+│ nhìn thấy mã QR của tài xế và không tự chuyển khoản      │
+│ được trong lúc hoảng loạn — buộc phụ thuộc người lạ.    │
+│                                                          │
+│ Ai đang đau? Tùng — người khiếm thị trong tình huống     │
+│ khẩn cấp; tài xế và người xung quanh bị kéo vào hỗ trợ. │
+│                                                          │
+│ Workflow hiện tại:                                       │
+│ 1. Tùng bị ngã → 2. Gọi xe ôm đến bệnh viện →           │
+│ 3. Tài xế đưa QR thanh toán →                           │
+│ 4. Tùng không định vị được QR, không tự quét →           │
+│ 5. Nhờ người lạ quét/chuyển khoản hộ →                  │
+│ 6. Giao dịch phụ thuộc hoàn toàn vào người lạ            │
+│                                                          │
+│ Bước nghẽn nhất: Bước 4 — không thể định vị và quét QR  │
+│ trong tình huống căng thẳng cao độ, không có người quen. │
+│                                                          │
+│ Đo thành công bằng gì?                                   │
+│ Tùng tự hoàn thành giao dịch khẩn cấp không cần nhờ     │
+│ người lạ; giảm thời gian thanh toán trong tình huống     │
+│ stress so với hiện tại.                                  │
+│                                                          │
+│ Quick gut: □ No AI  □ Rule  □ Workflow  ■ Agent          │
+└──────────────────────────────────────────────────────────┘
+```
 
-**Impact:**
+**Non-AI alternative:**
+Ứng dụng xe ôm (Grab, Be) tích hợp luồng thanh toán hỗ trợ accessibility với hướng dẫn bằng giọng nói. Tùng cài sẵn shortcut thanh toán nhanh cho các giao dịch khẩn cấp. Liên hệ khẩn cấp có thể hỗ trợ từ xa qua chia sẻ màn hình. (Phụ thuộc vào từng ứng dụng triển khai — không khả dụng trong mọi tình huống.)
 
-* giao dịch online định kỳ trở nên chậm hơn, mất thêm thời gian kiểm tra hoặc chờ người khác giúp
-* tăng nguy cơ chuyển nhầm tiền, gây tổn thất tài chính trực tiếp
-* khiến người khiếm thị phụ thuộc người khác, mất quyền tự chủ trong quản lý tiền
-* giảm sự tự tin khi dùng app ngân hàng và làm họ tránh dùng dịch vụ online hơn
-
-**Success metric:**
-
-- **Thời gian mỗi giao dịch**: giảm thời gian trung bình để người khiếm thị hoàn thành một lần chuyển khoản online.
-- **Tỷ lệ lỗi**: giảm tỷ lệ chuyển nhầm tiền hoặc hủy giao dịch do xác nhận sai thông tin.
-- **Mức độ hài lòng (CSAT)**: tăng điểm hài lòng của người dùng với luồng chuyển tiền và sự tự tin khi dùng app ngân hàng.
-- **Tỷ lệ độc lập**: phần trăm giao dịch hoàn thành mà không cần nhờ người khác hỗ trợ.
-- **Tỷ lệ tái sử dụng**: nhiều người khiếm thị chủ động chọn chuyển khoản online thay vì né tránh.
-
-**Non-AI alternative:
-
-- Improve the banking app workflow with built-in accessibility support:
-  - add Text-to-Speech for confirmation screens
-  - expose recipient name, account/phone, amount, and fee in a clear spoken prompt
-- Use a rule-based confirmation step:
-  - require the user to confirm the details twice
-  - show a simplified “read-back” summary before final submit
-- Provide offline support tools:
-  - add a dedicated “verify transfer” mode for screen readers
-  - allow user to save and reuse trusted beneficiaries with audio labels
-- Train staff/processes:
-  - educate customer support and product teams to prioritize accessible transfer flow
-  - enforce accessibility requirements in bank app updates rather than relying on AI automatio
-
-**Quick gut:**
-Workflow.
+**AI hypothesis:**
+Kính AI tự quét môi trường xung quanh, định vị mã QR của tài xế, đọc to thông tin người nhận và hướng dẫn Tùng từng bước hoàn thành giao dịch bằng giọng nói — hoạt động độc lập kể cả khi Tùng hoảng loạn, không cần nhờ bất kỳ người lạ nào.
