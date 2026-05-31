@@ -30,13 +30,13 @@ Nhân vật ví dụ: Tùng, 1 sinh viên đại học, hiện không thể tự
 # Problem Card #1 — Rủi ro tài chính
 
 **Actor:**
-Người khiếm thị chuyển chuyển tiền nhầm khi nhiều ngân hàng Việt Nam không support Text to Speech dẫn tới
+Tùng — sinh viên đại học khiếm thị, thực hiện giao dịch chuyển khoản định kỳ qua MoMo/app ngân hàng.
 
 **Thời điểm / bối cảnh:**
-Lặp lại định kỳ, mỗi khi người khiếm thị thực hiện giao dịch online
+Khi Tùng chuyển khoản qua MoMo/app ngân hàng để đóng tiền trọ, trả tiền nhóm, hoặc thanh toán dịch vụ hằng tháng.
 
 **Problem 1 câu:**
-Người khiếm thị chuyển tiền nhầm khi nhiều ngân hàng Việt Nam không hỗ trợ Text to Speech, khiến mỗi giao dịch online định kỳ trở thành một nguồn rủi ro và phải phụ thuộc người khác.
+Tùng không thể tự xác nhận tên người nhận và số tiền trước khi bấm gửi, khiến mỗi giao dịch online trở thành rủi ro mất tiền và buộc phải phụ thuộc người khác.
 
 **Current workflow:**
 
@@ -58,11 +58,11 @@ Bước xác nhận thông tin cuối cùng chỉ hiển thị văn bản, nên 
 
 **Success metric:**
 
-- **Time per transaction**: reduce average time for a blind user to complete an online transfer.
-- **Error rate**: lower percentage of wrong transfers or canceled transactions due to mis-confirmation.
-- **CSAT / satisfaction**: increase user satisfaction score for transfer flow and confidence in banking app.
-- **Independence rate**: percent of transactions completed without help from another person.
-- **Repeat usage / adoption**: more blind users choosing online transfer instead of avoiding it
+- **Thời gian mỗi giao dịch**: giảm thời gian trung bình để người khiếm thị hoàn thành một lần chuyển khoản online.
+- **Tỷ lệ lỗi**: giảm tỷ lệ chuyển nhầm tiền hoặc hủy giao dịch do xác nhận sai thông tin.
+- **Mức độ hài lòng (CSAT)**: tăng điểm hài lòng của người dùng với luồng chuyển tiền và sự tự tin khi dùng app ngân hàng.
+- **Tỷ lệ độc lập**: phần trăm giao dịch hoàn thành mà không cần nhờ người khác hỗ trợ.
+- **Tỷ lệ tái sử dụng**: nhiều người khiếm thị chủ động chọn chuyển khoản online thay vì né tránh.
 
 **Non-AI alternative:
 
@@ -78,9 +78,6 @@ Bước xác nhận thông tin cuối cùng chỉ hiển thị văn bản, nên 
 - Train staff/processes:
   - educate customer support and product teams to prioritize accessible transfer flow
   - enforce accessibility requirements in bank app updates rather than relying on AI automatio
-
-**AI hypothesis:**
-AI hỗ trợ cấu trúc dữ liệu và draft narrative. PM vẫn review/edit trước khi gửi.
 
 **Quick gut:**
 Workflow.
