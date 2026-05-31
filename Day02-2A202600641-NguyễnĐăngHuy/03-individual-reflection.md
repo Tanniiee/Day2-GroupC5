@@ -26,11 +26,23 @@
 
 ## Reflection
 
+Phần khó nhất với tôi không phải ở scan hay viết card — mà là trong buổi thảo luận nhóm, khi có người mang vào một ý tưởng quá lớn và quá tham vọng đến mức khó định lượng hay diễn đạt thành problem cụ thể. Ví dụ điển hình là khi Đức đề xuất xây dựng giải pháp hỗ trợ người khiếm thị di chuyển ngoài đường — ý tưởng nghe hay, nhưng scope quá rộng để có thể đo được hay pilot được. Tôi phải cố thu hẹp lại: không phải "đi lại ngoài đường", mà chỉ "sang đường" — một hành động cụ thể, có thể quan sát, có thể đo thời gian và sai số. Việc kéo một ý tưởng lớn về một bước nhỏ hơn mà vẫn giữ được giá trị cốt lõi là phần tôi thấy khó nhất trong buổi hôm nay.
 
+Phần scan và viết card cá nhân thì không gặp nhiều khó khăn. Có lẽ vì case Tùng đủ cụ thể và gần với thực tế quan sát được — các vấn đề tự hiện ra theo từng tình huống, không cần phải "nghĩ ra".
+
+Điều tôi nhận ra rõ hơn sau buổi này là: để tạo ra một sản phẩm AI thực sự dùng được, cần nhiều hơn là một pain point lớn và một giải pháp thông minh. Metric đo được, boundary rõ, và người dùng cụ thể mới là thứ quyết định sản phẩm có khả thi hay không. Và AI không nhất thiết phải là một phần của mọi sản phẩm — đôi khi một workflow được thiết kế tốt là đủ.
+
+Nếu làm lại, thay vì hướng đến cả chiếc kính AI, tôi sẽ nghĩ đến một thiết bị nhỏ có thể tháo rời và gắn vào kính thông thường — dễ adopt hơn, không yêu cầu người dùng thay toàn bộ thiết bị, và scope kỹ thuật nhỏ hơn đủ để pilot thực tế.
 
 ---
 
 ## Bài học của mình
+
+- Pain point rõ + metric đo được = sản phẩm có thể dùng được; thiếu một trong hai thì dù ý tưởng hay đến đâu cũng khó triển khai.
+- Scope và problem statement không cần cố định từ đầu — điều chỉnh linh hoạt theo quá trình thảo luận là bình thường và cần thiết.
+- Không có sản phẩm nào còn tốt hơn một giải pháp xuất sắc cho sai vấn đề.
+
+---
 
 
 
