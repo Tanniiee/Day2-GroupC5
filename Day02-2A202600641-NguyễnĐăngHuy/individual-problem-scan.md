@@ -61,6 +61,40 @@ App ngân hàng/MoMo tích hợp TTS đọc to tên người nhận, số tài k
 **AI hypothesis:**
 Kính AI nghe màn hình xác nhận và đọc to tên người nhận, số tài khoản và số tiền ngay trước khi Tùng bấm gửi — loại bỏ hoàn toàn bước nhờ người khác kiểm tra, áp dụng được trên mọi app ngân hàng mà không cần ngân hàng thay đổi gì.
 
+### Draft current workflow
+
+```
+CURRENT STATE — ~8-10 phút/giao dịch
+
+[1. Mở app MoMo/ngân hàng: 1']
+→ [2. Nhập SĐT + số tiền + nội dung: 2']
+→ [3. Màn hình xác nhận hiện ra — chỉ có văn bản: 0']
+→ [4. Nhắn tin / gọi nhờ bạn đọc lại: 3-5']  ← BOTTLENECK
+     - Chờ bạn phản hồi
+     - Đọc to tên người nhận, số tiền
+     - Tùng xác nhận lại bằng miệng
+→ [5. Bấm xác nhận & gửi: 1']
+
+Người thường: ~2 phút. Chênh lệch 4-5x mỗi giao dịch.
+```
+
+### Draft future workflow
+
+```
+FUTURE STATE — ~3-4 phút/giao dịch
+
+[1. Mở app MoMo/ngân hàng: 1']
+→ [2. Nhập SĐT + số tiền + nội dung: 2']
+→ [3. Màn hình xác nhận hiện ra — kính AI tự đọc to:
+     "Người nhận: Nguyễn Văn A. Số tiền: 500.000đ": 5 giây]
+→ [4. Tùng xác nhận bằng giọng nói: 10 giây]  ← HUMAN BOUNDARY
+→ [5. Bấm xác nhận & gửi: 30 giây]
+
+Không cần nhờ ai. Áp dụng trên mọi app, không cần app thay đổi.
+```
+
+---
+
 ```
 ┌──────────────────────────────────────────────────────────┐
 │ PROBLEM CARD #2 — Phụ thuộc người khác                  │
@@ -94,6 +128,41 @@ Siêu thị trang bị màn hình POS có TTS tại quầy thanh toán. Cung c�
 
 **AI hypothesis:**
 Kính AI nhìn vào màn hình POS và đọc to số tiền cần thanh toán trước khi Tùng chạm thẻ — cho phép Tùng tự xác nhận độc lập tại bất kỳ siêu thị nào mà không cần người đứng cạnh hay siêu thị phải thay đổi hạ tầng.
+
+### Draft current workflow
+
+```
+CURRENT STATE — phụ thuộc lịch bạn (0-2 ngày chờ + ~15 phút tại quầy)
+
+[1. Tùng muốn đi siêu thị: 0']
+→ [2. Nhắn tin hỏi bạn ai rảnh: 2']
+→ [3. Chờ bạn phản hồi & sắp xếp lịch: 0-2 ngày]  ← BOTTLENECK
+→ [4. Đi siêu thị cùng bạn: bình thường]
+→ [5. Tại quầy — bạn đọc màn hình POS cho Tùng: 2-3']  ← BOTTLENECK
+→ [6. Tùng chạm thẻ: 30 giây]
+→ [7. Bạn nhận & đọc biên lai xác nhận: 1']
+
+Không thể tự quyết định thời điểm mua sắm. Bạn bị kéo vào 1-2 lần/tuần.
+```
+
+### Draft future workflow
+
+```
+FUTURE STATE — bất kỳ lúc nào, ~5 phút tại quầy
+
+[1. Tùng muốn đi siêu thị: 0' — không cần hỏi ai]
+→ [2. Tự đến siêu thị bất kỳ lúc nào]
+→ [3. Mua sắm bình thường]
+→ [4. Tại quầy — kính AI nhìn POS, đọc to:
+     "Tổng tiền: 235.000đ — xác nhận không?": 5 giây]
+→ [5. Tùng xác nhận bằng giọng nói: 10 giây]  ← HUMAN BOUNDARY
+→ [6. Chạm thẻ: 30 giây]
+→ [7. Kính AI đọc biên lai xác nhận giao dịch: 10 giây]
+
+Không cần bạn đi cùng. Hoạt động tại bất kỳ siêu thị nào.
+```
+
+---
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -131,3 +200,53 @@ Kính AI nhìn vào màn hình POS và đọc to số tiền cần thanh toán t
 
 **AI hypothesis:**
 Kính AI tự quét môi trường xung quanh, định vị mã QR của tài xế, đọc to thông tin người nhận và hướng dẫn Tùng từng bước hoàn thành giao dịch bằng giọng nói — hoạt động độc lập kể cả khi Tùng hoảng loạn, không cần nhờ bất kỳ người lạ nào.
+
+### Draft current workflow
+
+```
+CURRENT STATE — ~10-15 phút, rủi ro cao
+
+[1. Tùng bị ngã xe: 0']
+→ [2. Gọi xe ôm: 2']
+→ [3. Lên xe, đến nơi — tài xế đưa QR: 0']
+→ [4. Tùng không định vị được QR, tìm người lạ nhờ giúp: 5-10']  ← BOTTLENECK
+     - Hoảng loạn, khó giao tiếp
+     - Không biết người lạ có tin được không
+     - Phải giải thích tình huống từ đầu
+→ [5. Người lạ quét QR hộ, xác nhận: 2']
+→ [6. Tùng không tự xác minh được giao dịch: 0']
+
+Rủi ro: phụ thuộc hoàn toàn vào sự tốt bụng của người lạ.
+```
+
+### Draft future workflow
+
+```
+FUTURE STATE — ~3 phút, độc lập hoàn toàn
+
+[1. Tùng bị ngã xe: 0']
+→ [2. Gọi xe ôm: 2']
+→ [3. Lên xe, tài xế đưa QR — kính AI tự phát hiện & quét: 5 giây]
+→ [4. Kính AI đọc to: "QR của Nguyễn Văn B - 50.000đ - xác nhận không?": 5 giây]
+→ [5. Tùng xác nhận bằng giọng nói: 5 giây]  ← HUMAN BOUNDARY
+→ [6. Giao dịch hoàn thành — kính AI xác nhận: 5 giây]
+
+Không cần nhờ người lạ. Hoạt động kể cả trong tình huống hoảng loạn.
+```
+
+---
+
+## Card tôi muốn pitch nhất
+
+**Card #1 — Rủi ro tài chính (MoMo/chuyển khoản)**
+
+Vì sao:
+- Lặp lại cao nhất — mỗi lần đóng tiền trọ, trả tiền nhóm, thanh toán dịch vụ đều gặp vấn đề này (~12 lần/năm chỉ riêng tiền trọ, chưa tính các giao dịch khác).
+- Metric rõ và dễ đo: thời gian/giao dịch, tỷ lệ chuyển nhầm, tỷ lệ giao dịch không cần nhờ người.
+- AI hypothesis cụ thể và khả thi ngay: kính đọc màn hình là tác vụ OCR đơn giản, không cần train model phức tạp.
+- Impact rộng hơn một người — bất kỳ app ngân hàng VN nào đều có vấn đề này, không chỉ MoMo.
+
+Câu hỏi tôi muốn nhóm challenge:
+- "Nếu ngân hàng chỉ cần thêm TTS là xong, tại sao cần kính AI?"
+- "Kính AI đọc màn hình có đủ chính xác để tin tưởng với giao dịch tài chính không?"
+- "Nếu Tùng dùng tai nghe, kính AI nói qua loa có gây lộ thông tin tài khoản không?"
